@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "typescript-demo", "typescript-demo.csproj", "{6C8160EA-65A8-4A0B-B788-D800F6D4E593}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C8160EA-65A8-4A0B-B788-D800F6D4E593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C8160EA-65A8-4A0B-B788-D800F6D4E593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C8160EA-65A8-4A0B-B788-D800F6D4E593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C8160EA-65A8-4A0B-B788-D800F6D4E593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05018A9C-FCC0-4D0B-8B75-429099AF4E4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05018A9C-FCC0-4D0B-8B75-429099AF4E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05018A9C-FCC0-4D0B-8B75-429099AF4E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05018A9C-FCC0-4D0B-8B75-429099AF4E4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

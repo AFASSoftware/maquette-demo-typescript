@@ -1,0 +1,21 @@
+node_modules
+coverage
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+#Visual studio
+.vs
+bin
+obj
+src/**/*.js
+src/**/*.js.map
+
+
+# Folder config file
+Desktop.ini
+
+# Other
+*.user
+build
