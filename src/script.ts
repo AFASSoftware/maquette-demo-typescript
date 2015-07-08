@@ -1,6 +1,6 @@
 ///<reference path="typings/tsd.d.ts" />
-//import createTextField from "text-field";
-import createTextField = require("./text-field");
+
+import createTextField = require("./text-field");// Typescript 1.5 and ecmascript2015 syntax: import createTextField from "text-field";
 
 document.addEventListener('DOMContentLoaded', function () {
   var h = maquette.h;
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
       you = newYou;
     }
   });
+
   function renderMaquette() {
     return h("div", [
       textField.renderMaquette(),
