@@ -63,6 +63,7 @@
     <Content Include="index.html" />
     <Content Include="tsconfig.json" />
     <Content Include="tsd.json" />
+    <Content Include="package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -79,7 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\script.ts" />
-    <TypeScriptCompile Include="src\model-property.ts" />
     <TypeScriptCompile Include="src\text-field.ts" />
     <TypeScriptCompile Include="src\typings\maquette\maquette.d.ts" />
     <TypeScriptCompile Include="src\typings\tsd.d.ts" />
@@ -87,9 +87,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="build\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
