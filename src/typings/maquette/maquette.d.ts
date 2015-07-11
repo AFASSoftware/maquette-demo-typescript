@@ -17,7 +17,7 @@ declare module maquette {
       children: VNode[]) => void;
     afterUpdate?: (element: Element, projectionOptions: ProjectionOptions, vnodeSelector: string, properties: VNodeProperties,
       children: VNode[]) => void;
-    [index: string]: any;
+    [index: string]: Object;
   }
 
   export interface ProjectionOptions {
@@ -27,7 +27,7 @@ declare module maquette {
     }
   }
 
-  export type VNodeChild = string|VNode|Array<string|VNode|Array<any>>; // Array<any> means Array<VNodeChild>
+  export type VNodeChild = string|VNode|Array<string|VNode|Array<string|VNode|Array<string|VNode|Array<Object>>>>; // Array<Object> means Array<VNodeChild>
 
   export var dom: MaquetteDom;
 
@@ -36,7 +36,7 @@ declare module maquette {
      * In practice, caching of {@link VNode} trees is not needed, because achieving 60 frames per second is almost never a problem.
      * @returns {CalculationCache}
      */
-  export function createCache(): CalculationCache;
+  export function createCache<Result>(): CalculationCache<Result>;
   
     /**
      * Creates a {@link Mapping} instance that keeps an array of result objects synchronized with an array of source objects.
@@ -45,7 +45,10 @@ declare module maquette {
      * @param {function} updateResult - `function(source, target, index)` that updates a result to an updated source.
      * @returns {Mapping} 
      */
-  export function createMapping(getSourceKey: (source: any) => any, createResult: (source:any, index:number) => any, updateResult: (source: any, target: any, index: number) => void): Mapping;
+  export function createMapping<Source, Target>(
+    getSourceKey: (source: Source) => (string|number), 
+    createResult: (source: Source, index:number) => Target, 
+    updateResult: (source: Source, target: Target, index: number) => void): Mapping<Source, Target>;
 
     /**
      * Creates a {@link Projector} instance using the provided projectionOptions.
@@ -116,7 +119,7 @@ declare module maquette {
    * This object can be used to bypass both rendering and diffing of a virtual DOM subtree.
    * Instances of {@link CalculationCache} can be created using {@link module:maquette.createCache}.
    */
-  export interface CalculationCache {
+  export interface CalculationCache<Result> {
         /**
          * Manually invalidates the cached outcome.
          */
@@ -129,7 +132,7 @@ declare module maquette {
          * These objects are assumed to be immutable primitive values.
          * @param {function} calculation - Function that takes zero arguments and returns an object (A {@link VNode} assumably) that can be cached.
          */
-    result(inputs: Array<any>, calculation: () => any):any;
+    result(inputs: Array<Object>, calculation: () => Result):Result;
   }
 
   /**
@@ -139,17 +142,17 @@ declare module maquette {
    * A {@link Mapping} can be used to keep an array of components (objects with a `renderMaquette` method) synchronized with an array of data.
    * Instances of {@link Mapping} can be created using {@link module:maquette.createMapping}.
    */
-  export interface Mapping {
+  export interface Mapping<Source, Target> {
         /**
          * The array of results. These results will be synchronized with the latest array of sources that were provided using {@link Mapping#map}.
          * @type {Object[]}
          */
-    results: Array<any>;
+    results: Array<Target>;
         /**
          * Maps a new array of sources and updates {@link Mapping#results}.
          * @param {Object[]} newSources - The new array of sources.
          */
-    map(newSources: Array<any>): void;
+    map(newSources: Array<Source>): void;
   }
 
   /**
@@ -164,7 +167,7 @@ declare module maquette {
        * @param {Object} projectionOptions - Options to be used to create and update the projection, see {@link module:maquette.createProjector}. 
        * @returns {Projection} The {@link Projection} that was created.
        */
-    append(parentNode: Element, vnode: VNode, projectionOptions?: any): Projection;
+    append(parentNode: Element, vnode: VNode, projectionOptions?: ProjectionOptions): Projection;
       /**
        * Creates a real DOM tree from a {@link VNode}. The {@link Projection} object returned will contain the resulting DOM Node under the {@link Projection#domNode} property. 
        * This is a low-level method. Users wil typically use a {@link Projector} instead. 
@@ -172,7 +175,7 @@ declare module maquette {
        * @param {Object} projectionOptions - Options to be used to create and update the projection, see {@link module:maquette.createProjector}. 
        * @returns {Projection} The {@link Projection} which contains the DOM Node that was created.
        */
-    create(vnode: VNode, projectionOptions?: any): Projection;
+    create(vnode: VNode, projectionOptions?: ProjectionOptions): Projection;
       /**
        * Inserts a new DOM node which is generated from a {@link VNode}. 
        * This is a low-level method. Users wil typically use a {@link Projector} instead. 
@@ -242,7 +245,7 @@ declare module maquette {
          * @param {Element} rootNode - Element to start scanning at, example: `document.body`.
          * @param {Object} parameters - Variables to expose to the scripts. format: `{var1:value1, var2: value2}`
          */
-    evaluateHyperscript(rootNode: Element, parameters: any): void;
+    evaluateHyperscript(rootNode: Element, parameters: {[index: string]: Object}): void;
         /**
          * Inserts a new DOM node using the result from the provided `renderMaquetteFunction`.
          * The `renderMaquetteFunction` will be invoked again to update the DOM when needed.
