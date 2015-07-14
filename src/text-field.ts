@@ -14,14 +14,12 @@ var createTextField = (config: {
   };
   
   return {
-    renderMaquette: function () {
-      return h("input", {
-        type: "text",
-        placeholder: config.placeholder,
-        value: config.getValue(),
-        oninput: handleNameInput
-      });
-    }
+    renderMaquette: () => h("input", {
+      type: "text",
+      placeholder: config.placeholder,
+      value: config.getValue(),
+      oninput: handleNameInput
+    })
   };
 };
 
