@@ -64,12 +64,6 @@
     <Content Include="tsconfig.json" />
     <Content Include="tsd.json" />
     <Content Include="package.json" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="gulpfile.js" />
