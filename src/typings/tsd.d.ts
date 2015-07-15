@@ -1,1 +1,1 @@
-///<reference path="maquette/maquette.d.ts" />
+/// <reference path="maquette/maquette.d.ts" />

@@ -4,5 +4,9 @@
   "ref": "master",
   "path": "src/typings",
   "bundle": "src/typings/tsd.d.ts",
-  "installed": {}
+  "installed": {
+    "maquette/maquette.d.ts": {
+      "commit": "0fff32b558aa91ba24cfca5479aba02e4ef2fafe"
+    }
+  }
 }

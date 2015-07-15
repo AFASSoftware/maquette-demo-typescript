@@ -9,6 +9,33 @@
    */
 declare module maquette {
 
+  // Needed for typescript pre-1.5?
+  interface Touch {
+    clientX: number;
+    clientY: number;
+    identifier: number;
+    pageX: number;
+    pageY: number;
+    screenX: number;
+    screenY: number;
+    target: EventTarget;
+  }
+  interface TouchList {
+    length: number;
+    item(index: number): Touch;
+    [index: number]: Touch;
+  }
+  interface TouchEvent extends UIEvent {
+    altKey: boolean;
+    changedTouches: TouchList;
+    ctrlKey: boolean;
+    metaKey: boolean;
+    shiftKey: boolean;
+    targetTouches: TouchList;
+    touches: TouchList;
+  }
+
+
   export interface VNodeProperties {
     enterAnimation?: ((element: Element, properties?: VNodeProperties) => void) | string;
     exitAnimation?: ((element: Element, removeElement: () => void, properties?: VNodeProperties) => void) | string;
@@ -17,9 +44,9 @@ declare module maquette {
       children: VNode[]) => void;
     afterUpdate?: (element: Element, projectionOptions: ProjectionOptions, vnodeSelector: string, properties: VNodeProperties,
       children: VNode[]) => void;
-    key?: Object,
-    classes?: {[index:string]: boolean},
-    styles?: {[index:string]: string},
+    key?: Object;
+    classes?: {[index:string]: boolean};
+    styles?: {[index:string]: string};
     
     // From Element
     ontouchcancel?: (ev?: TouchEvent) => boolean|void;
@@ -67,7 +94,7 @@ declare module maquette {
     src?: string;
     value?: string;
     // From HTMLImageElement
-    alt: string;
+    alt?: string;
     srcset?: string;
     
     // Everything else (uncommon or custom properties and attributes)
