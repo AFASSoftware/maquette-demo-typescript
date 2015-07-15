@@ -5,13 +5,14 @@ coverage
 Thumbs.db
 ehthumbs.db
 
-#Visual studio
+# Editors
 .vs
 bin
 obj
 src/**/*.js
 src/**/*.js.map
-
+/.idea
+/*.iml
 
 # Folder config file
 Desktop.ini
