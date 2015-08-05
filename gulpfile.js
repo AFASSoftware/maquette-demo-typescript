@@ -14,7 +14,9 @@ gulp.task("javascript", function () {
     debug: true
   });
   b.on("log", gutil.log); // output build logs to terminal
-  b.plugin("tsify");
+  b.plugin(tsify, {
+    typescript: require("typescript")
+  });
 
   return b.bundle()
     // log errors if they happen
